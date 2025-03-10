@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Edit book</title>
+</head>
+
+<!-- TODO: päivitä tähän projektiin !! -->
+
+<body>
+    <h1>Edit book</h1>
+    <div>
+        <form th:object="${book}" th:action="@{/save}" action="#" method="post">
+
+            <label for="id"></label>
+            <input type="hidden" id="id" th:field="*{id}" class="form-control" />
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" th:field="*{author}" /><br>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" th:field="*{title}" /><br>
+
+            <label for="publicationYear">Year:</label>
+            <input type="number" id="publicationYear" th:field="*{publicationYear}" /><br>
+
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" th:field="*{isbn}" /><br>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" th:field="*{price}" /><br>
+
+            <label for="category">Category</label>
+            <select id="category" th:field="*{category}" class="form-control">
+                <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}">
+                </option>
+            </select>
+
+
+            <input type="submit" class="btn btn-success" value="Save"></input>
+
+        </form>
+    </div>
+</body>
+
+</html>
