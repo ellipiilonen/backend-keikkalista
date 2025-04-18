@@ -30,19 +30,20 @@ public class GigContoller {
     @Autowired
     private GenreRepository grepository;
 
-    // Get all gigs
+    // Show gigs in a list
     @GetMapping("/giglist")
     public String gigList(Model model) {
         model.addAttribute("gigs", repository.findAll());
         return "giglist";
     }
 
+    // Get all gigs
     @GetMapping("/gigs")
     public @ResponseBody List<Gig> gigListRest() {
         return (List<Gig>) repository.findAll();
     }
 
-    // Select a gig
+    // Get a gig
     @GetMapping("/gig/{id}")
     public @ResponseBody Optional<Gig> findGigRest(@PathVariable("id") Long gigId) {
         return repository.findById(gigId);
