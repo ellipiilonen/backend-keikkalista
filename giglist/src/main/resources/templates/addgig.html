@@ -3,35 +3,32 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Add gig</title>
+    <title>Add a gig</title>
 </head>
 
 <!-- TODO: päivitä tähän projektiin!! -->
 
 <body>
-    <h1>Add book</h1>
+    <h1>Add a gig</h1>
     <div>
-        <form th:object="${book}" th:action="@{save}" method="post">
-            <label for="author">Author:</label>
-            <input type="text" id="author" th:field="*{author}" /><br>
+        <form th:object="${gig}" th:action="@{save}" method="post">
+            <label for="artist">Artist:</label>
+            <input type="text" id="artist" th:field="*{artist}" /><br>
 
-            <label for="title">Title:</label>
-            <input type="text" id="title" th:field="*{title}" /><br>
-
-            <label for="publicationYear">Year:</label>
-            <input type="number" id="publicationYear" th:field="*{publicationYear}" /><br>
-
-            <label for="isbn">ISBN:</label>
-            <input type="text" id="isbn" th:field="*{isbn}" /><br>
-
-            <label for="price">Price:</label>
-            <input type="number" id="price" th:field="*{price}" /><br>
-
-            <label for="category">Category</label>
-            <select id="category" th:field="*{category}" class="form-control">
-                <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}">
+            <label for="genre">Genre:</label>
+            <select id="genre" th:field="*{genre}" class="form-control">
+                <option th:each="genre: ${genres}" th:value="${genre.id}" th:text="${genre.name}">
                 </option>
-            </select>
+            </select><br>
+
+            <label for="pvm">Date:</label>
+            <input type="text" id="pvm" th:field="*{pvm}" /><br>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" th:field="*{city}" /><br>
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" th:field="*{country}" /><br>
 
             <input type="submit" value="Save" />
         </form>

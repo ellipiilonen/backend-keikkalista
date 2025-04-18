@@ -30,6 +30,7 @@ public class GigContoller {
     @Autowired
     private GenreRepository grepository;
 
+    // Get all gigs
     @GetMapping("/giglist")
     public String gigList(Model model) {
         model.addAttribute("gigs", repository.findAll());
@@ -41,11 +42,13 @@ public class GigContoller {
         return (List<Gig>) repository.findAll();
     }
 
+    // Select a gig
     @GetMapping("/gig/{id}")
     public @ResponseBody Optional<Gig> findGigRest(@PathVariable("id") Long gigId) {
         return repository.findById(gigId);
     }
 
+    // Add a gig
     @RequestMapping("/add")
     public String addGig(Model model) {
         model.addAttribute("gig", new Gig());
@@ -53,19 +56,22 @@ public class GigContoller {
         return "addgig";
     }
 
+    // Save a gig
     @PostMapping("/save")
     public String save(Gig gig) {
         repository.save(gig);
         return "redirect:/giglist";
     }
 
+    // Delete a gig
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String deleteBook(@PathVariable("id") Long gigId, Model model) {
+    public String deleteGig(@PathVariable("id") Long gigId, Model model) {
         repository.deleteById(gigId);
         return "redirect:/giglist";
     }
 
+    // Edit a gig
     @RequestMapping("/edit/{id}")
     public String editGig(@PathVariable("id") Long gigId, Model model) {
         model.addAttribute("gig", repository.findById(gigId));
@@ -73,11 +79,13 @@ public class GigContoller {
         return "editgig";
     }
 
+    // Login
     @GetMapping("/login")
     public String login(Model model) {
         return "login";
     }
 
+    // Logout
     @GetMapping("/logout")
     public String logout(Model model) {
         return "redirect:/login?logout";

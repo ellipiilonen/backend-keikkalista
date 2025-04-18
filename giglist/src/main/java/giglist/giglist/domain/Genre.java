@@ -20,23 +20,23 @@ public class Genre {
     private String name;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    private List<Book> books;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
+    private List<Gig> gigs;
 
-    public List<Book> getBooks() {
-        return books;
+    public List<Gig> getGigs() {
+        return gigs;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setGigs(List<Gig> gigs) {
+        this.gigs = gigs;
     }
 
-    public Category(String name) {
+    public Genre(String name) {
         this.name = name;
 
     }
 
-    public Category() {
+    public Genre() {
 
     }
 
@@ -50,7 +50,7 @@ public class Genre {
 
     @Override
     public String toString() {
-        return "Category [name=" + name + ", books=" + books + "]";
+        return "Genre [name=" + name + ", gigs=" + gigs + "]";
     }
 
     public Long getId() {

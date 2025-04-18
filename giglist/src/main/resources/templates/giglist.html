@@ -3,41 +3,39 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Books</title>
+    <title>Gigs</title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
 <!-- TODO: päivitä tähän projektiin !! -->
 
 <body>
-    <h1>Books</h1>
+    <h1>Gigs</h1>
     <h2>Hello <span sec:authentication="name"></span>!</h2>
     <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out" />
+        <input type="submit" value="Sign Out" /> <br>
     </form>
     <table class="table table-striped">
         <tr>
-            <th>Author</th>
-            <th>Title</th>
-            <th>Year</th>
-            <th>ISBN</th>
-            <th>Price</th>
-            <th>Category</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Date</th>
+            <th>City</th>
+            <th>Country</th>
 
         </tr>
-        <tr th:each="book : ${books}">
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.publicationYear}"></td>
-            <td th:text="${book.isbn}"></td>
-            <td th:text="${book.price}"></td>
-            <td th:text="${book.category?.name}"></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}"
+        <tr th:each="gig : ${gigs}">
+            <td th:text="${gig.artist}"></td>
+            <td th:text="${gig.genre?.name}"></td>
+            <td th:text="${#temporals.format(gig.pvm, 'd.M.yyyy')}"></td>
+            <td th:text="${gig.city}"></td>
+            <td th:text="${gig.country}"></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/delete/{id}(id=${gig.id})}"
                     class="btn btn-danger">Delete</a></td>
-            <td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-success">Edit</a></td>
+            <td><a th:href="@{/edit/{id}(id=${gig.id})}" class="btn btn-success">Edit</a></td>
         </tr>
     </table>
-    <p><a th:href="@{/add}" class="btn btn-success">Add book</a></p>
+    <p><a th:href="@{/add}" class="btn btn-success">Add a gig</a></p>
 </body>
 
 </html>
