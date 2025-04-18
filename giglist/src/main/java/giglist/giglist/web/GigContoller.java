@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import giglist.giglist.domain.GenreRepository;
 import giglist.giglist.domain.Gig;
 import giglist.giglist.domain.GigRepository;
+import giglist.giglist.domain.User;
 
 @Controller
 
@@ -90,6 +92,21 @@ public class GigContoller {
     @GetMapping("/logout")
     public String logout(Model model) {
         return "redirect:/login?logout";
+    }
+
+    // Register
+    @GetMapping("/register")
+    public String register(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "register";
+    }
+
+    // Save new user
+    @PostMapping("/saveuser")
+    public String saveUser(@ModelAttribute User user, Model model) {
+        model.addAttribute("user", user);
+        return "redirect:/login";
     }
 
 }
