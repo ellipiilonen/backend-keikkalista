@@ -19,8 +19,6 @@ import giglist.giglist.domain.UserRepository;
 @SpringBootApplication
 public class GiglistApplication {
 
-	// TODO: päivitä tähän projektiin!
-
 	private static final Logger log = LoggerFactory.getLogger(GiglistApplication.class);
 
 	public static void main(String[] args) {

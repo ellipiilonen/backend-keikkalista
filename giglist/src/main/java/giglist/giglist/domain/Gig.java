@@ -16,7 +16,6 @@ public class Gig {
     @ManyToOne
     @JoinColumn(name = "artistid")
     private Genre genre;
-    // booklistin category -> genre?
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,9 +25,6 @@ public class Gig {
     private LocalDate pvm;
     private String city;
     private String country;
-
-    // LocalDate päivämäärä!
-    // getterit, setterit, jne...
 
     public Gig(String artist, Genre genre, LocalDate pvm, String city, String country) {
         this.genre = genre;

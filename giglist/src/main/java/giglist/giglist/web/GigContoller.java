@@ -23,11 +23,6 @@ import giglist.giglist.domain.UserRepository;
 
 @Controller
 
-// LocalDate-päivämäärät!!
-// rek ja kirj
-// JWT?
-// muuta nämä bookstoresta tähän projektiin
-
 public class GigContoller {
     @Autowired
     private GigRepository repository;

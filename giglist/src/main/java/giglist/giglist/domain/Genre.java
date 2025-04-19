@@ -11,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-// Tämä booktoresta tähän projektiin !!
 @Entity
 public class Genre {
     @Id
