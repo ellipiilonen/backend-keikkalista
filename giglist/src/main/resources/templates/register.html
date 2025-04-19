@@ -9,13 +9,13 @@
 <body>
     <h1>Sign up</h1>
     <form th:action="@{/saveuser}" th:object="${user}" method="post">
-        <div><label>Username:</label>
-            <input type="text" class="form-control" name="username" />
+        <div><label for="username">Username:</label>
+            <input type="text" th:field="*{username}" required />
         </div>
-        <div><label>Password:</label>
-            <input type="password" class="form-control" name="password" />
+        <div><label for="passwordHash">Password:</label>
+            <input type="password" th:field="*{passwordHash}" required />
         </div>
-        <div><input type="submit" value="Sign Un" /></div><br>
+        <div><input type="submit" value="Sign Up" /></div><br>
     </form>
 
 

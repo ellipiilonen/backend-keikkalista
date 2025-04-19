@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GiglistApplication<giglist>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "giglist.giglist.GiglistApplication",
+            "projectName": "giglist",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import giglist.giglist.domain.GenreRepository;
 import giglist.giglist.domain.Gig;
 import giglist.giglist.domain.GigRepository;
 import giglist.giglist.domain.User;
+import giglist.giglist.domain.UserRepository;
 
 @Controller
 
@@ -31,6 +33,10 @@ public class GigContoller {
     private GigRepository repository;
     @Autowired
     private GenreRepository grepository;
+    @Autowired
+    private UserRepository urepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     // Show gigs in a list
     @GetMapping("/giglist")
@@ -105,7 +111,9 @@ public class GigContoller {
     // Save new user
     @PostMapping("/saveuser")
     public String saveUser(@ModelAttribute User user, Model model) {
-        model.addAttribute("user", user);
+        user.setPasswordHash(passwordEncoder.encode(user.getPasswordHash()));
+        user.setRole("USER");
+        urepository.save(user);
         return "redirect:/login";
     }
 
