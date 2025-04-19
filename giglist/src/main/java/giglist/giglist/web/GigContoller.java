@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import giglist.giglist.domain.Genre;
 import giglist.giglist.domain.GenreRepository;
 import giglist.giglist.domain.Gig;
 import giglist.giglist.domain.GigRepository;
@@ -81,6 +82,21 @@ public class GigContoller {
         model.addAttribute("gig", repository.findById(gigId));
         model.addAttribute("genres", grepository.findAll());
         return "editgig";
+    }
+
+    // Add a genre
+    @RequestMapping("/addgenre")
+    public String addGenre(Model model) {
+        model.addAttribute("genre", new Genre());
+        model.addAttribute("genres", grepository.findAll());
+        return "addgenre";
+    }
+
+    // Save a genre
+    @PostMapping("/savegenre")
+    public String saveGenre(Genre genre, Model model) {
+        grepository.save(genre);
+        return "redirect:/giglist";
     }
 
     // Login

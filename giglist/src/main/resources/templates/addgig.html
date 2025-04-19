@@ -20,7 +20,7 @@
             </select><br>
 
             <label for="pvm">Date:</label>
-            <input type="text" id="pvm" th:field="*{pvm}" /><br>
+            <input type="date" id="pvm" th:field="*{pvm}" /><br>
 
             <label for="city">City:</label>
             <input type="text" id="city" th:field="*{city}" /><br>
@@ -30,6 +30,7 @@
 
             <input type="submit" value="Save" />
         </form>
+        <a th:href="@{/giglist}" class="btn btn-giglist">Back to giglist</a></td>
     </div>
 </body>
 
